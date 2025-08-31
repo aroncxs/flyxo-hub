@@ -54,39 +54,6 @@ local function anchorchildren(model)
 end
 
 Tab:CreateToggle({
-   Name = "Anchor Main Gubby",
-   CurrentValue = false,
-   Flag = "AnchorMainGubby",
-   Callback = function(value)
-       mainAnchored = value
-       local gubby = getGubby()
-       if gubby then
-           if gubby:FindFirstChild("RootPart") then
-               gubby.RootPart.Anchored = mainAnchored
-           end
-           anchorchildren(gubby)
-       end
-   end
-})
-
-Tab:CreateToggle({
-   Name = "Auto Refill Fuel",
-   CurrentValue = false,
-   Flag = "AutoRefillFuel",
-   Callback = function(value)
-       fuelRunning = value
-       if fuelRunning then
-           task.spawn(function()
-               while fuelRunning do
-                   purchaseGas:FireServer(10)
-                   task.wait()
-               end
-           end)
-       end
-   end
-})
-
-Tab:CreateToggle({
    Name = "Auto Farm",
    CurrentValue = false,
    Flag = "InfDamage",
@@ -125,7 +92,40 @@ Tab:CreateToggle({
        end
    end
 })
-   
+
+Tab:CreateToggle({
+   Name = "Auto Refill Fuel",
+   CurrentValue = false,
+   Flag = "AutoRefillFuel",
+   Callback = function(value)
+       fuelRunning = value
+       if fuelRunning then
+           task.spawn(function()
+               while fuelRunning do
+                   purchaseGas:FireServer(10)
+                   task.wait()
+               end
+           end)
+       end
+   end
+})
+
+Tab:CreateToggle({
+   Name = "Anchor Gubby",
+   CurrentValue = false,
+   Flag = "AnchorMainGubby",
+   Callback = function(value)
+       mainAnchored = value
+       local gubby = getGubby()
+       if gubby then
+           if gubby:FindFirstChild("RootPart") then
+               gubby.RootPart.Anchored = mainAnchored
+           end
+           anchorchildren(gubby)
+       end
+   end
+})
+
 local TabOthers = Window:CreateTab("Others", 4483362458)
 
 local function getCurrentGubby()

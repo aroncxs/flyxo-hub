@@ -87,7 +87,28 @@ Tab:CreateToggle({
 })
 
 Tab:CreateToggle({
-   Name = "Auto Farm (~700k/s)",
+   Name = "Auto Farm (700k/s)",
+   CurrentValue = false,
+   Flag = "InfDamage",
+   Callback = function(value)
+       infDamageRunning = value
+       if infDamageRunning then
+           task.spawn(function()
+               while infDamageRunning do
+                   voidDamage:FireServer(Vector3.new(999, 999, 999))
+                   airstrikeDamage:FireServer(Vector3.new(999, 999, 999), 3.11)
+                   smiteDamage:FireServer(Vector3.new(999, 999, 999))
+                   physicsDamage:FireServer(333.54, Vector3.new(999, 999, 999))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
+                   task.wait()
+               end
+           end)
+       end
+   end
+})
+   
+Tab:CreateToggle({
+   Name = "Laggy Auto Farm (5M/s)",
    CurrentValue = false,
    Flag = "InfDamage",
    Callback = function(value)
@@ -115,7 +136,7 @@ Tab:CreateToggle({
        end
    end
 })
-
+   
 local TabOthers = Window:CreateTab("Others", 4483362458)
 
 local function getCurrentGubby()

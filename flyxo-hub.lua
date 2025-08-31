@@ -138,6 +138,19 @@ TabOthers:CreateButton({
     end
 })
 
+TabOthers:CreateButton({
+    Name = "Ragdoll Gubby",
+    Callback = function()
+        local gubby = getCurrentGubby()
+        if gubby and gubby:FindFirstChild("GubbyEvents") then
+            local rdEvent = gubby.GubbyEvents:FindFirstChild("Ragdoll")
+            if rdEvent then
+                rdEvent:Fire()
+            end
+        end
+    end
+})
+
 local soundsDisabled = false
 local moneyLoop = nil
 
@@ -186,5 +199,5 @@ TabOthers:CreateToggle({
 })
 
 else
-   warn("Please join one of our supported games, it's on our Discord (https://discord.gg/UXgGqZ7w3v)")
+   warn("Game not supported. Please join one of our supported games, it's on our Discord (https://discord.gg/UXgGqZ7w3v)")
 end

@@ -100,27 +100,6 @@ Tab:CreateToggle({
                    smiteDamage:FireServer(Vector3.new(999, 999, 999))
                    physicsDamage:FireServer(333.54, Vector3.new(999, 999, 999))
                    foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
-                   task.wait()
-               end
-           end)
-       end
-   end
-})
-   
-Tab:CreateToggle({
-   Name = "Laggy Auto Farm",
-   CurrentValue = false,
-   Flag = "InfDamage",
-   Callback = function(value)
-       infDamageRunning = value
-       if infDamageRunning then
-           task.spawn(function()
-               while infDamageRunning do
-                   voidDamage:FireServer(Vector3.new(999, 999, 999))
-                   airstrikeDamage:FireServer(Vector3.new(999, 999, 999), 3.11)
-                   smiteDamage:FireServer(Vector3.new(999, 999, 999))
-                   physicsDamage:FireServer(333.54, Vector3.new(999, 999, 999))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
                    foodDamage:FireServer("CherryBomb", Vector3.new(989, 989, 989))
                    foodDamage:FireServer("CherryBomb", Vector3.new(979, 979, 979))
                    foodDamage:FireServer("CherryBomb", Vector3.new(969, 969, 969))
@@ -130,16 +109,16 @@ Tab:CreateToggle({
                    foodDamage:FireServer("CherryBomb", Vector3.new(909, 909, 909))
                    foodDamage:FireServer("CherryBomb", Vector3.new(919, 919, 919))
                    foodDamage:FireServer("CherryBomb", Vector3.new(929, 929, 929))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(989, 989, 989))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(979, 979, 979))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(969, 969, 969))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(959, 959, 959))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(949, 949, 949))
-                   foodDamage:FireServer("RatPoison", Vector3.new(939, 939, 939))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(909, 909, 909))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(919, 919, 919))
-                   foodDamage:FireServer("CherryBomb", Vector3.new(929, 929, 929))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(991, 991, 991))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(977, 988, 988))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(978, 978, 978))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(968, 968, 968))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(958, 958, 958))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(948, 948, 948))
+                   foodDamage:FireServer("RatPoison", Vector3.new(938, 938, 938))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(908, 908, 908))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(918, 918, 918))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(928, 928, 928))
                    task.wait()
                end
            end)

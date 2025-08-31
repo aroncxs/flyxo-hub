@@ -43,6 +43,7 @@ if game.PlaceId == 111452220770252 then
     local mainAnchored = false
     local fuelRunning = false
     local infDamageRunning = false
+    local autoFarmTask = nil
 
     local function anchorchildren(model)
         for _, child in pairs(model:GetChildren()) do
@@ -60,39 +61,55 @@ if game.PlaceId == 111452220770252 then
         Flag = "InfDamage",
         Callback = function(value)
             infDamageRunning = value
+
+            local moneyGUI = game.ReplicatedStorage.PlayerData[player.Name].Settings:FindFirstChild("ShowMoneyGUIs")
+            if moneyGUI and moneyGUI:IsA("BoolValue") then
+                moneyGUI.Value = not value
+            end
+
             if infDamageRunning then
-                task.spawn(function()
+                autoFarmTask = task.spawn(function()
                     while infDamageRunning do
-                        voidDamage:FireServer(Vector3.new(999, 999, 999))
-                        airstrikeDamage:FireServer(Vector3.new(999, 999, 999), 3.11)
-                        smiteDamage:FireServer(Vector3.new(999, 999, 999))
-                        physicsDamage:FireServer(333.54, Vector3.new(999, 999, 999))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(989, 989, 989))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(979, 979, 979))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(969, 969, 969))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(959, 959, 959))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(949, 949, 949))
-                        foodDamage:FireServer("RatPoison", Vector3.new(939, 939, 939))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(909, 909, 909))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(919, 919, 919))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(929, 929, 929))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(991, 991, 991))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(977, 988, 988))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(978, 978, 978))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(968, 968, 968))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(958, 958, 958))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(948, 948, 948))
-                        foodDamage:FireServer("RatPoison", Vector3.new(938, 938, 938))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(908, 908, 908))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(918, 918, 918))
-                        foodDamage:FireServer("CherryBomb", Vector3.new(928, 928, 928))
-                        local soundsFolder = game.ReplicatedStorage.GameAssets.Sounds
-                        if soundsFolder:FindFirstChild("Money1") then soundsFolder.Money1:Destroy() end
-                        if soundsFolder:FindFirstChild("Money2") then soundsFolder.Money2:Destroy() end
-                        task.wait()
+                        voidDamage:FireServer(Vector3.new(999,999,999))
+                        airstrikeDamage:FireServer(Vector3.new(999,999,999),3.11)
+                        smiteDamage:FireServer(Vector3.new(999,999,999))
+                        physicsDamage:FireServer(333.54, Vector3.new(999,999,999))
+
+                        local foodTargets = {
+                            {"CherryBomb", Vector3.new(999,999,999)},
+                            {"CherryBomb", Vector3.new(989,989,989)},
+                            {"CherryBomb", Vector3.new(979,979,979)},
+                            {"CherryBomb", Vector3.new(969,969,969)},
+                            {"CherryBomb", Vector3.new(959,959,959)},
+                            {"CherryBomb", Vector3.new(949,949,949)},
+                            {"RatPoison", Vector3.new(939,939,939)},
+                            {"CherryBomb", Vector3.new(909,909,909)},
+                            {"CherryBomb", Vector3.new(919,919,919)},
+                            {"CherryBomb", Vector3.new(929,929,929)},
+                            {"CherryBomb", Vector3.new(991,991,991)},
+                            {"CherryBomb", Vector3.new(977,988,988)},
+                            {"CherryBomb", Vector3.new(978,978,978)},
+                            {"CherryBomb", Vector3.new(968,968,968)},
+                            {"CherryBomb", Vector3.new(958,958,958)},
+                            {"CherryBomb", Vector3.new(948,948,948)},
+                            {"RatPoison", Vector3.new(938,938,938)},
+                            {"CherryBomb", Vector3.new(908,908,908)},
+                            {"CherryBomb", Vector3.new(918,918,918)},
+                            {"CherryBomb", Vector3.new(928,928,928)}
+                        }
+
+                        for _, item in ipairs(foodTargets) do
+                            foodDamage:FireServer(item[1], item[2])
+                        end
+
+                        task.wait() -- mantém rápido
                     end
                 end)
+            else
+                if autoFarmTask then
+                    task.cancel(autoFarmTask)
+                    autoFarmTask = nil
+                end
             end
         end
     })
@@ -185,26 +202,17 @@ if game.PlaceId == 111452220770252 then
         Callback = function(value)
             soundsDisabled = value
             if soundsDisabled then
-                if moneyLoop then
-                    task.cancel(moneyLoop)
-                end
+                if moneyLoop then task.cancel(moneyLoop) end
                 moneyLoop = task.spawn(function()
                     while soundsDisabled do
                         local soundsFolder = game.ReplicatedStorage.GameAssets.Sounds
-                        if soundsFolder:FindFirstChild("Money1") then
-                            soundsFolder.Money1:Destroy()
-                        end
-                        if soundsFolder:FindFirstChild("Money2") then
-                            soundsFolder.Money2:Destroy()
-                        end
+                        if soundsFolder:FindFirstChild("Money1") then soundsFolder.Money1:Destroy() end
+                        if soundsFolder:FindFirstChild("Money2") then soundsFolder.Money2:Destroy() end
                         task.wait(0.1)
                     end
                 end)
             else
-                if moneyLoop then
-                    task.cancel(moneyLoop)
-                    moneyLoop = nil
-                end
+                if moneyLoop then task.cancel(moneyLoop) moneyLoop = nil end
                 local soundsFolder = game.ReplicatedStorage.GameAssets.Sounds
                 if not soundsFolder:FindFirstChild("Money1") then
                     local money1 = Instance.new("Sound")

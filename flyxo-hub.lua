@@ -1,4 +1,4 @@
-print("Remember to join our discord! https://discord.gg/UXgGqZ7w3v (copied to clipboard)")
+print("Remember to join our discord! (copied invite link to clipboard)")
 setclipboard("https://discord.gg/UXgGqZ7w3v")
 if game.PlaceId == 111452220770252 then
    local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()

@@ -87,7 +87,7 @@ Tab:CreateToggle({
 })
 
 Tab:CreateToggle({
-   Name = "Auto Farm (700k/s)",
+   Name = "Auto Farm",
    CurrentValue = false,
    Flag = "InfDamage",
    Callback = function(value)
@@ -108,7 +108,7 @@ Tab:CreateToggle({
 })
    
 Tab:CreateToggle({
-   Name = "Laggy Auto Farm (5M/s)",
+   Name = "Laggy Auto Farm",
    CurrentValue = false,
    Flag = "InfDamage",
    Callback = function(value)
@@ -120,6 +120,16 @@ Tab:CreateToggle({
                    airstrikeDamage:FireServer(Vector3.new(999, 999, 999), 3.11)
                    smiteDamage:FireServer(Vector3.new(999, 999, 999))
                    physicsDamage:FireServer(333.54, Vector3.new(999, 999, 999))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(989, 989, 989))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(979, 979, 979))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(969, 969, 969))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(959, 959, 959))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(949, 949, 949))
+                   foodDamage:FireServer("RatPoison", Vector3.new(939, 939, 939))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(909, 909, 909))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(919, 919, 919))
+                   foodDamage:FireServer("CherryBomb", Vector3.new(929, 929, 929))
                    foodDamage:FireServer("CherryBomb", Vector3.new(999, 999, 999))
                    foodDamage:FireServer("CherryBomb", Vector3.new(989, 989, 989))
                    foodDamage:FireServer("CherryBomb", Vector3.new(979, 979, 979))

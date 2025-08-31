@@ -1,4 +1,5 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+if game.PlaceId == 111452220770252 then
+   local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
    Name = "Flyxo Hub",
@@ -183,3 +184,7 @@ TabOthers:CreateToggle({
         end
     end
 })
+
+else
+   warn("Please join one of our supported games, it's on our Discord (https://discord.gg/UXgGqZ7w3v)")
+end

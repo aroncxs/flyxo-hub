@@ -10,7 +10,7 @@ local Window = Rayfield:CreateWindow({
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false,
    ConfigurationSaving = {Enabled = true, FolderName = nil, FileName = "Big Hub"},
-   Discord = {Enabled = true, Invite = "https://discord.gg/UXgGqZ7w3v", RememberJoins = true},
+   Discord = {Enabled = true, Invite = "UXgGqZ7w3v", RememberJoins = true},
    KeySystem = false,
    KeySettings = {Title = "Untitled", Subtitle = "Key System", Note = "No method of obtaining the key is provided", FileName = "Key", SaveKey = true, GrabKeyFromSite = false, Key = {"Hello"}}
 })

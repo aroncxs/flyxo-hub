@@ -54,7 +54,6 @@ if game.PlaceId == 111452220770252 then
         end
     end
 
-    -- Auto Farm
     Tab:CreateToggle({
         Name = "Auto Farm",
         CurrentValue = false,
@@ -98,7 +97,6 @@ if game.PlaceId == 111452220770252 then
         end
     })
 
-    -- Auto Refill Fuel
     Tab:CreateToggle({
         Name = "Auto Refill Fuel",
         CurrentValue = false,
@@ -116,7 +114,6 @@ if game.PlaceId == 111452220770252 then
         end
     })
 
-    -- Anchor Gubby
     Tab:CreateToggle({
         Name = "Anchor Gubby",
         CurrentValue = false,
@@ -225,7 +222,6 @@ if game.PlaceId == 111452220770252 then
         end
     })
 
-    -- Tab Skins com nomes amigáveis
     local TabSkins = Window:CreateTab("Skins", 4483362458)
     local skinNames = {
         ["Pancake Gubby"] = "PancakeGubby",
